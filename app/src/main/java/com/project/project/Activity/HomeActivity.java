@@ -1,16 +1,18 @@
 package com.project.project.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.project.Adapter.BarangAdapter;
@@ -29,7 +31,7 @@ public class HomeActivity extends AppCompatActivity{
     private FloatingActionButton actionButton;
     private AddBarangFragment addBarangFragment;
     private AppDatabase db;
-    private  ArrayList<Barang> ListBarang;
+    private ArrayList<Barang> ListBarang;
     public BarangAdapter barangAdapter;
 
     @Override
@@ -40,11 +42,11 @@ public class HomeActivity extends AppCompatActivity{
         ListBarang  = new ArrayList<>();
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "barang").allowMainThreadQueries().build();
         rv = findViewById(R.id.rvContact);
+        rv.setHasFixedSize(true);
         ListBarang.addAll(Arrays.asList(db.barangDAO().getAll()));
-        barangAdapter = new BarangAdapter(ListBarang);
+        barangAdapter = new BarangAdapter(ListBarang, this);
         rv.setAdapter(barangAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_add, addBarangFragment).commit();
         actionButton = findViewById(R.id.fab1);
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +61,18 @@ public class HomeActivity extends AppCompatActivity{
                     isFabOpen = true;
                     FrameLayout layout = findViewById(R.id.frame_add);
                     layout.setVisibility(View.VISIBLE);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_add, addBarangFragment).commit();
+                }
+            }
+        });
+        rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && actionButton.getVisibility() == View.VISIBLE) {
+                    actionButton.hide();
+                } else if (dy < 0 && actionButton.getVisibility() != View.VISIBLE) {
+                    actionButton.show();
                 }
             }
         });
@@ -83,5 +97,4 @@ public class HomeActivity extends AppCompatActivity{
                 setInterpolator(interpolator).
                 start();
     }
-
 }

@@ -1,6 +1,7 @@
 package com.project.project.Fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -55,6 +56,9 @@ public class AddBarangFragment extends Fragment {
                 b.setNama_barang(nama_barang.getText().toString());
                 b.setHarga_beli(harga_beli.getText().toString());
                 b.setStock(Integer.parseInt(stock.getText().toString()));
+                int hr = Integer.parseInt(harga_beli.getText().toString());
+                int st = Integer.parseInt(stock.getText().toString());
+                b.setHarga_pcs(String.valueOf( hr / st));
                 b.setGambar_barang(ImageUrl.getText().toString());
                 insertData(b);
             }
@@ -83,6 +87,9 @@ public class AddBarangFragment extends Fragment {
                 harga_beli.setText("");
                 stock.setText("");
                 ImageUrl.setText("");
+                Intent intent = new Intent(getContext(), HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         }.execute();
     }

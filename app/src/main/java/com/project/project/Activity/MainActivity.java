@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.transition.anim,R.transition.anim);
                 finish();
             }
-        }, 3000);
+        }, 4000);
     }
 }
