@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity"
-    android:background="#ffffff">
+    android:background="?attr/backgroundcolor">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inventori Toko"
-        android:textColor="#000000"
+        android:textColor="?attr/textcolor"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"

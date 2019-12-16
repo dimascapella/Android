@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.project.Adapter.BarangAdapter;
@@ -33,9 +33,17 @@ public class HomeActivity extends AppCompatActivity{
     private AppDatabase db;
     private ArrayList<Barang> ListBarang;
     public BarangAdapter barangAdapter;
+    private ImageView imageView;
+    SharedPref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pref = new SharedPref(this);
+        if(pref.loadNightMode() == true){
+            setTheme(R.style.DarkTheme);
+        }else{
+            setTheme(R.style.AppTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         addBarangFragment = new AddBarangFragment();
@@ -74,6 +82,15 @@ public class HomeActivity extends AppCompatActivity{
                 } else if (dy < 0 && actionButton.getVisibility() != View.VISIBLE) {
                     actionButton.show();
                 }
+            }
+        });
+
+        imageView = findViewById(R.id.menu);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, SettingActivity.class));
+                finish();
             }
         });
     }

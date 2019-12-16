@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.project.Activity.HomeActivity;
+import com.project.project.Activity.SharedPref;
 import com.project.project.Entity.AppDatabase;
 import com.project.project.Entity.Barang;
 import com.project.project.R;
@@ -31,6 +32,7 @@ public class AddBarangFragment extends Fragment {
     private EditText nama_barang, harga_beli, stock, ImageUrl;
     private AppDatabase db;
     private FloatingActionButton actionButton;
+    SharedPref pref;
 
 
     public AddBarangFragment() {
@@ -42,6 +44,12 @@ public class AddBarangFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        pref = new SharedPref(getContext());
+        if(pref.loadNightMode() == true){
+            getActivity().setTheme(R.style.DarkTheme);
+        }else{
+            getActivity().setTheme(R.style.AppTheme);
+        }
         db = Room.databaseBuilder(getActivity().getApplicationContext(), AppDatabase.class, "barang").build();
         View view = inflater.inflate(R.layout.fragment_add_barang, container, false);
         nama_barang = view.findViewById(R.id.txtNamaBarang);

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="?attr/backgroundcolor"
     tools:context=".Activity.HomeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorFAB"
+        android:tint="?attr/tintcolor"
         android:src="@drawable/add_btn"
         app:borderWidth="0dp"
         app:elevation="6dp"
@@ -51,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -66,23 +68,22 @@
         android:layout_height="wrap_content"
         android:text="Data Barang"
         android:textSize="30sp"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/rvContact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="#000000" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="550dp"
+        android:id="@+id/menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:scaleType="fitXY"
-        android:elevation="-5dp"
-        android:alpha="0.4"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:tint="?attr/tintcolor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline6"
-        app:srcCompat="@drawable/inv" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

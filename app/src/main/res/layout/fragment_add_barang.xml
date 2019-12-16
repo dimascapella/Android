@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="?attr/fragmentcolor"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="Tambah Barang"
+            android:textColor="?attr/textcolor"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Nama Barang"
+            android:textColorHint="?attr/textcolor"
+            android:textColor="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -46,6 +50,8 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Harga Beli"
+            android:textColorHint="?attr/textcolor"
+            android:textColor="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtNamaBarang" />
@@ -60,6 +66,8 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Stock"
+            android:textColorHint="?attr/textcolor"
+            android:textColor="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtHargaBeli" />
@@ -74,6 +82,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Image Url"
+            android:textColorHint="?attr/textcolor"
+            android:textColor="?attr/textcolor"
             android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +98,9 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="40dp"
             android:text="Tambah"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:background="?attr/buttoncolor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -95,15 +108,5 @@
             app:layout_constraintTop_toBottomOf="@+id/txtImageUrl"
             app:layout_constraintVertical_bias="0.192" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:elevation="-5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/clip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
